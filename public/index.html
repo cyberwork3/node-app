@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A modern Node.js application with a beautiful user interface">
+    <title>NodeApp — Modern Server Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <!-- Animated background blobs -->
+    <div class="bg-blobs">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-brand">
+            <div class="logo-icon">
+                <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+                    <path d="M14 2L26 8V20L14 26L2 20V8L14 2Z" stroke="url(#logoGrad)" stroke-width="2" fill="none"/>
+                    <path d="M14 8L20 11V17L14 20L8 17V11L14 8Z" fill="url(#logoGrad)"/>
+                    <defs>
+                        <linearGradient id="logoGrad" x1="2" y1="2" x2="26" y2="26">
+                            <stop stop-color="#818cf8"/>
+                            <stop offset="1" stop-color="#c084fc"/>
+                        </linearGradient>
+                    </defs>
+                </svg>
+            </div>
+            <span class="brand-text">NodeApp</span>
+        </div>
+        <div class="nav-links">
+            <a href="#home" class="nav-link active">Home</a>
+            <a href="#features" class="nav-link">Features</a>
+            <a href="#stats" class="nav-link">Stats</a>
+            <a href="#about" class="nav-link">About</a>
+        </div>
+        <div class="nav-actions">
+            <div class="status-badge" id="server-status">
+                <span class="status-dot"></span>
+                <span>Server Live</span>
+            </div>
+        </div>
+        <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle mobile menu">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobile-menu">
+        <a href="#home" class="mobile-link">Home</a>
+        <a href="#features" class="mobile-link">Features</a>
+        <a href="#stats" class="mobile-link">Stats</a>
+        <a href="#about" class="mobile-link">About</a>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <div class="hero-badge animate-fade-up">
+                <span class="badge-dot"></span>
+                Built with Node.js
+            </div>
+            <h1 class="hero-title animate-fade-up delay-1">
+                Your First
+                <span class="gradient-text">Node Project</span>
+                is Live.
+            </h1>
+            <p class="hero-subtitle animate-fade-up delay-2">
+                A blazing-fast server running on <strong>localhost:3000</strong>. 
+                This is just the beginning — build APIs, serve pages, and scale to production.
+            </p>
+            <div class="hero-actions animate-fade-up delay-3">
+                <a href="#features" class="btn btn-primary" id="explore-btn">
+                    <span>Explore Features</span>
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                        <path d="M4 10H16M16 10L11 5M16 10L11 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </a>
+                <a href="#stats" class="btn btn-secondary" id="stats-btn">
+                    <span>View Stats</span>
+                </a>
+            </div>
+        </div>
+        <div class="hero-visual animate-fade-up delay-2">
+            <div class="terminal-window">
+                <div class="terminal-header">
+                    <div class="terminal-dots">
+                        <span class="dot red"></span>
+                        <span class="dot yellow"></span>
+                        <span class="dot green"></span>
+                    </div>
+                    <span class="terminal-title">terminal — node</span>
+                </div>
+                <div class="terminal-body" id="terminal-body">
+                    <div class="terminal-line">
+                        <span class="prompt">$</span>
+                        <span class="command" id="typed-cmd"></span>
+                        <span class="cursor" id="cursor">▎</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="section-header">
+            <span class="section-tag">Features</span>
+            <h2 class="section-title">Everything you need to <span class="gradient-text">get started</span></h2>
+            <p class="section-subtitle">Your Node.js server comes with powerful capabilities out of the box.</p>
+        </div>
+        <div class="features-grid">
+            <div class="feature-card" id="feature-server">
+                <div class="feature-icon icon-server">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="2" y="3" width="20" height="6" rx="2"/>
+                        <rect x="2" y="15" width="20" height="6" rx="2"/>
+                        <circle cx="6" cy="6" r="1" fill="currentColor"/>
+                        <circle cx="6" cy="18" r="1" fill="currentColor"/>
+                    </svg>
+                </div>
+                <h3>HTTP Server</h3>
+                <p>Built on Node.js native HTTP module — lightweight, fast, and dependency-free.</p>
+            </div>
+            <div class="feature-card" id="feature-api">
+                <div class="feature-icon icon-api">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                        <circle cx="9" cy="7" r="4"/>
+                        <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                        <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                    </svg>
+                </div>
+                <h3>REST API Ready</h3>
+                <p>Easily extend with routes and middleware. Add Express.js for powerful API construction.</p>
+            </div>
+            <div class="feature-card" id="feature-realtime">
+                <div class="feature-icon icon-realtime">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+                    </svg>
+                </div>
+                <h3>Real-time</h3>
+                <p>Add WebSocket support for live data streaming, chat, and real-time notifications.</p>
+            </div>
+            <div class="feature-card" id="feature-scalable">
+                <div class="feature-icon icon-scalable">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+                        <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
+                        <line x1="12" y1="22.08" x2="12" y2="12"/>
+                    </svg>
+                </div>
+                <h3>Scalable</h3>
+                <p>Node.js event-driven architecture handles thousands of concurrent connections efficiently.</p>
+            </div>
+            <div class="feature-card" id="feature-npm">
+                <div class="feature-icon icon-npm">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0z"/>
+                        <path d="M9 12l2 2 4-4"/>
+                    </svg>
+                </div>
+                <h3>NPM Ecosystem</h3>
+                <p>Access over 2 million packages. Install anything from databases to authentication in seconds.</p>
+            </div>
+            <div class="feature-card" id="feature-deploy">
+                <div class="feature-icon icon-deploy">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+                    </svg>
+                </div>
+                <h3>Easy Deploy</h3>
+                <p>Deploy to Vercel, Railway, or any cloud provider with a single command.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section" id="stats">
+        <div class="section-header">
+            <span class="section-tag">Live Stats</span>
+            <h2 class="section-title">Server <span class="gradient-text">Performance</span></h2>
+            <p class="section-subtitle">Real-time metrics from your running Node.js server.</p>
+        </div>
+        <div class="stats-grid">
+            <div class="stat-card" id="stat-uptime">
+                <div class="stat-ring">
+                    <svg viewBox="0 0 100 100">
+                        <circle cx="50" cy="50" r="40" class="ring-bg"/>
+                        <circle cx="50" cy="50" r="40" class="ring-fill" id="uptime-ring"/>
+                    </svg>
+                    <span class="stat-value" id="uptime-value">0s</span>
+                </div>
+                <h4>Uptime</h4>
+                <p class="stat-desc">Server running time</p>
+            </div>
+            <div class="stat-card" id="stat-requests">
+                <div class="stat-number">
+                    <span class="big-number" id="request-count">0</span>
+                </div>
+                <h4>Requests</h4>
+                <p class="stat-desc">Total HTTP requests served</p>
+            </div>
+            <div class="stat-card" id="stat-response">
+                <div class="stat-number">
+                    <span class="big-number" id="response-time">&lt;1</span>
+                    <span class="stat-unit">ms</span>
+                </div>
+                <h4>Avg Response</h4>
+                <p class="stat-desc">Lightning-fast responses</p>
+            </div>
+            <div class="stat-card" id="stat-memory">
+                <div class="stat-number">
+                    <span class="big-number" id="memory-usage">0</span>
+                    <span class="stat-unit">MB</span>
+                </div>
+                <h4>Memory</h4>
+                <p class="stat-desc">Heap memory usage</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- About / CTA Section -->
+    <section class="about-section" id="about">
+        <div class="cta-card">
+            <h2>Ready to build something <span class="gradient-text">amazing</span>?</h2>
+            <p>This is your launchpad. Add routes, connect databases, build APIs — the Node.js ecosystem is your playground.</p>
+            <div class="cta-actions">
+                <a href="https://nodejs.org/en/docs" target="_blank" rel="noopener" class="btn btn-primary" id="docs-btn">
+                    <span>Read the Docs</span>
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                        <path d="M4 12L12 4M12 4H5M12 4V11" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </a>
+                <a href="https://github.com" target="_blank" rel="noopener" class="btn btn-ghost" id="github-btn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                    </svg>
+                    <span>GitHub</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <div class="logo-icon">
+                    <svg width="22" height="22" viewBox="0 0 28 28" fill="none">
+                        <path d="M14 2L26 8V20L14 26L2 20V8L14 2Z" stroke="url(#logoGrad2)" stroke-width="2" fill="none"/>
+                        <path d="M14 8L20 11V17L14 20L8 17V11L14 8Z" fill="url(#logoGrad2)"/>
+                        <defs>
+                            <linearGradient id="logoGrad2" x1="2" y1="2" x2="26" y2="26">
+                                <stop stop-color="#818cf8"/>
+                                <stop offset="1" stop-color="#c084fc"/>
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                </div>
+                <span>NodeApp</span>
+            </div>
+            <p class="footer-text">Built with ❤️ using Node.js • <span id="current-year"></span></p>
+        </div>
+    </footer>
+
+    <script src="/script.js"></script>
+</body>
+</html>
