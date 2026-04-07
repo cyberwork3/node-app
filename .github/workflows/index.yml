@@ -1,0 +1,12 @@
+name: Github actions
+on: push
+jobs:
+  action-demo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v4
+      - name: check index.html
+        run: cat index.html
+
+#github actions checkout and check index.html files
