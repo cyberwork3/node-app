@@ -1,10 +1,20 @@
-name: Hello World
+name: Multiple jobs
 on: workflow_dispatch
 jobs:
-  hello:
+  build:
     runs-on: ubuntu-latest
     steps:
-      - name: Hello Reva
-        run: |
-          echo "this is line 1"
-          echo "This is line 2"
+      - name: Build step
+        run: echo "hello world 1 build application"
+
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Test step
+        run: echo "hello world 2 run test cases"
+
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy step
+        run: echo "hello world 3 deploy the application"
