@@ -5,4 +5,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Hello Reva
-        run: echo "Hello Man"
+        run: |
+          echo "this is line 1"
+          echo "This is line 2"
